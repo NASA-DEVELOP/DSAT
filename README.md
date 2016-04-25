@@ -1,5 +1,5 @@
-# RAINN
-Drought Assessment Index for Monitoring Precipitation
+# DSAT
+Drought Severity Assessment Tool (formerly Drought Severity Assessment - Decision Support Tool)
 
 ##Introduction
 
