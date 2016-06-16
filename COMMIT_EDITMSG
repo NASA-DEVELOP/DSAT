@@ -1,6 +1,0 @@
-app did not like updateSliderInput
-
-The app really didn’t like updating the slider input label, so I did a
-workaround by rendering the text above it via uiOutput and renderText
-combo. Also fixed some warnings with selected by the value rather than
-named vector
