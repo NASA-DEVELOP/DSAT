@@ -1,0 +1,55 @@
+/*main.css*/
+
+.jumbotron {
+	position: absolute;
+	top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+	height: 450px;
+	color: white;
+	text-shadow: #444 0 1px 1px;
+	background: url('../img/jumbo3.jpg') no-repeat center center;
+	-moz-background-size:100% 100%;
+	-webkit-background-size:100% 100%;
+	background-size:100% 100%;
+	background-attachment: scroll;
+	margin-bottom: 5px;
+}
+
+#words {
+	margin-top: 400px;
+}
+
+.jumbotron h1 {
+	margin-top: 180px;
+	color: white !important;
+}
+
+.inputparam {
+	display: inline-block;
+    width: 40%;
+    margin-left: 7%;
+}
+
+.inputparam2 {
+	display: inline-block;
+    width: 40%;
+    margin-left: 7%;
+
+}
+
+.shiny-progress .bar {
+	background-color: #FF0000;
+	.opacity = 0.8;
+}
+
+.shiny-progress .progress {
+	height:7px;
+}
+
+.ameslogo {
+	margin-top: 5%;
+	margin-left:20%;
+}

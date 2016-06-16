@@ -1,0 +1,33 @@
+/*map.css*/
+
+#mymap { 
+	width: 100%;
+	height: 92% !important;
+	top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+	visibility: inherit;
+	position: fixed;
+}
+
+/*Control panel css, from superzip*/
+
+.shiny-input-container {
+  width: 100% !important;
+}
+
+#controls, #timeSlide {
+  /* Appearance */
+  background-color: white;
+  padding: 0 20px 20px 20px;
+  cursor: move;
+  /* Fade out while not hovering */
+  opacity: 0.65;
+  transition: opacity 200ms 100ms;
+}
+#controls:hover, #timeSlide:hover {
+  /* Fade in while hovering */
+  opacity: 0.95;
+  transition-delay: 0;
+}
