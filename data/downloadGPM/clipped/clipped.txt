@@ -1,0 +1,1 @@
+#The tool will clip the raster to the selected shapefile
