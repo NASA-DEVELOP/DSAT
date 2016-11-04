@@ -6,16 +6,13 @@ require(leaflet)  #web mapping
 require(rgdal)    #geospatial library
 require(SPEI)     #for SPI calculation
 require(reshape2) #data processing
-require(zoo)    #dates
+require(zoo)      #dates
 require(ggplot2)  #plotting
+require(shinyjs)  #resetting purposes
+require(V8)       #for shinyjs
 
 # get current year
 currYear <<- as.numeric(format(Sys.time(), format="%Y"))
-
-# get the projected raster images in data/vis folder for visualization
-VIZstack <<- stack(list.files("data/visualize/spi", full.names=TRUE))
-# VIZstack <<- brick(VIZstack)
-PROCstack <<- stack(list.files("data/process/spi", full.names=TRUE))
 
 # read for plotting
 agencies <<- readOGR("data/visualize/shapefile/agency.shp", "agency")
@@ -23,6 +20,7 @@ chapters <<- readOGR("data/visualize/shapefile/chapter.shp", "chapter")
 eco3 <<- readOGR("data/visualize/shapefile/eco3.shp", "eco3")
 eco4 <<- readOGR("data/visualize/shapefile/eco4.shp", "eco4")
 watershed <<- readOGR("data/visualize/shapefile/water_sheds.shp", "water_sheds")
+cities <<- read.csv("data/visualize/citymarkers.csv")
 
 agenciesProc <<- readOGR("data/process/shapefile/agency.shp", "agency")
 chaptersProc <<- readOGR("data/process/shapefile/chapter.shp", "chapter")
@@ -30,9 +28,10 @@ eco3Proc <<- readOGR("data/process/shapefile/eco3.shp", "eco3")
 eco4Proc <<- readOGR("data/process/shapefile/eco4.shp", "eco4")
 watershedProc <<- readOGR("data/process/shapefile/water_sheds.shp", "water_sheds")
 
-## for ui
-# additional functions for creating ui
 
+
+##### for ui #####
+# additional functions for creating ui
 actionButton <- function(inputId, label, 
                          style = "" , 
                          additionalClass = "", 
@@ -96,19 +95,26 @@ textInputHelpBT <- function(inputId, buttonID, label, value = "", help="")
 #####################
 #		Server 		#
 #####################
-		
+
+# Define the js method that resets the page
+jsResetCode <- "shinyjs.reset = function() {history.go();}"
+	
+
 source("scripts/spi.r")
 source("scripts/zonalspi.r")
-source("scripts/downClipGPM.r")
+source("scripts/downClipCHIRPS.r")
 source("scripts/drSevByShp.r")
 
-lab <- c("-3" = "extremely dry",
-		 "-2" = "severely dry",
-		 "-1" = "moderately dry",
-		 "0" =  "near normal",
-		 "1" =  "moderately wet",
-		 "2" =  "severely wet",
-		 "3" =  "extremely wet")
+
+
+
+lab <- c("-3" = "extremely dry \n(-2.00+)",
+		 "-2" = "severely dry \n(-1.50 to -1.99)",
+		 "-1" = "moderately dry \n(-1.00 to -1.49)",
+		 "0" =  "near normal \n(-0.99 to 0.99)",
+		 "1" =  "moderately wet \n(1.00 to 1.49)",
+		 "2" =  "severely wet \n(1.50 to 1.99)",
+		 "3" =  "extremely wet \n(2.00+)")
 
 col <- c("-3" = "#9A0000", 
 		 "-2" = "#BC605C", 
@@ -117,6 +123,12 @@ col <- c("-3" = "#9A0000",
 		 "1" = "#C1CED9", 
 		 "2" = "#638CBE", 
 		 "3" = "#054AA3")
+
+leg_col <- c("2" = "#054AA3",
+    "1" = "#93afd2",
+    "0"  = "#F0F0E7",
+    "-1" = "#CB8380", 
+    "-2" = "#9A0000")
 
 
 col_map <- c("#9A0000", "#A82826", "#B6504D", "#C57873", 

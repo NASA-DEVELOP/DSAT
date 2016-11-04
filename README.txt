@@ -1,20 +1,21 @@
-For the tool to run....
-1) developnn/data/visualize/spi and developnn/data/process/spi must both have at LEAST one tiff file of the same extent in their folders. They only serve as a place holder.
+The Drought Severity Assessment Tool 2.0 (DSAT) is a decision support tool created for the Navajo Nation to allow water managers 
+to generate Standardized Precipitation Index (SPI) values specific to chosen boundaries within the Nation. 
+The SPI is an index that compares accumulated rainfall during a specific period of time to accumulated rainfall during that specific time period throughout history. 
 
-To update the database to include the latest CHIRPS data
-2) go to the download tab and click download!
 
-To calculate SPI....
-3) Move data from developnn/data/downloadGPM/clipped to developnn/data/process/precip
+To get started, it is recommended that you first read through the manual for step-by-step instructions and more in-depth descriptions of the DSAT's functionalities.
+The manual is located in the DSAT 2.0 folder. 
 
-To visualize the data...
-4) After SPI has been calculated, delete the spi folders located in developnn/data/process and developnn/data/visualization
-5) Copy the entire SPI folder from within developnn/data/process/precip to developnn/data/process and developnn/data/visualization (replacing the old folders)
-6) Close and restart DSAT. Visualization should now show the most up to date data
+For a quick start-up
+1) Ensure that the DSAT 2.0 folder are dragged to your computer's C:/ drive
+2) Ensure that you have downloaded Rstudio version at least 3.3.0
+3) Open the Open.R file (located in the DSAT 2.0 folder) within Rstudio
+4) Click "Run App"
+5) Continue with the installation instructions detailed in the manual
 
-Note: when you update the database to include new CHIRPS data, the entire SPI dataset must be recalculated. To reset...
-7) delete the developnn/data/process/precip/spi folder
-8) Download new files using the download CHIRPS tool
-9) move the newly downloaded and clipped CHIRPS data to precip
-10)Run the calculate SPI tool
-11)Return to step 3
+From there, you can
+1) download the latest CHIRPS data
+2) calculate SPI for a specific time period and time scale using the CHIRPS data
+3) generate summary statistics for the SPI data
+4) visualize the SPI data
+

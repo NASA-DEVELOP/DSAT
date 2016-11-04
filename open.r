@@ -1,35 +1,57 @@
 ##Open App
+setwd("F:/DSAT 2.0")
 
-#call packages
+myPath <- .libPaths()[1]
+toInstall <- c("devtools",
+               "R.utils",
+               "rgdal", 
+               "leaflet", 
+               "raster",
+               "lubridate",
+               "zoo",
+               "reshape2",
+               "SPEI",
+               "shiny", 
+               "shinyjs", 
+               "V8")
+for (i in toInstall) {
+  install.packages(i, lib=myPath)
+  }
+
+
+
+# install.packages("devtools")
+# install.packages(c("R.utils", 
+#                    "rgdal", 
+#                    "leaflet", 
+#                    "raster",
+#                    "lubridate",
+#                    "zoo",
+#                    "reshape2",
+#                    "SPEI",
+#                    "shiny", 
+#                    "shinyjs", 
+#                    "V8"))
+# 
+
+
+source("http://bioconductor.org/biocLite.R")
+biocLite("rhdf5")
+biocLite()
+
 require(rgdal)
 require(leaflet)
 require(raster)
 require(lubridate)
 require(zoo)
-require(ggplot2)
 require(reshape2)
 require(SPEI)
 require(shiny)
+require(shinyjs)
+require(V8)
+require(R.utils)
 
-#install packages
-install.packages("leaflet")
-install.packages("raster")
-install.packages("rgdal")
-install.packages("SPEI")
-install.packages("zoo")
-install.packages("reshape2")
-install.packages(“ggplot2”, dependencies = TRUE)
-install.packages(“Rcpp”)
-install.packages("R.utils")
+install.packages("ggplot2", dependencies = TRUE)
+require(ggplot2)
 
-#call and install this specific package
-source("https://bioconductor.org/biocLite.R")
-biocLite("rhdf5")
-biocLite()
-
-#set working directory, call Shiny, and run Shiny app
-setwd(“C:/file_name”) 
-require(shiny)
-runApp() 
-
-
+runApp()
