@@ -89,13 +89,13 @@ drSevByShp <- function(shp, raster, aORc, progress=NULL) {
 	result$perclab <- paste0(as.character(result$perc), "%")
 
 	result$class <- NA
-	result$class[result$Var1 == -3] <- "extremely dry"
-	result$class[result$Var1 == -2] <- "severely dry"
-	result$class[result$Var1 == -1] <- "moderately dry"
-	result$class[result$Var1 == 0]  <- "near normal"
-	result$class[result$Var1 == 1]  <- "moderately wet"
-	result$class[result$Var1 == 2]  <- "severely wet"
-	result$class[result$Var1 == 3]  <- "extremely wet"
+	result$class[result$Var1 == -3] <- "extremely dry (-2.00+)"
+	result$class[result$Var1 == -2] <- "severely dry (-1.50 to -1.99)" 
+	result$class[result$Var1 == -1] <- "moderately dry (-1.00 to -1.49)"
+	result$class[result$Var1 == 0]  <- "near normal (-0.99 to 0.99)"
+	result$class[result$Var1 == 1]  <- "moderately wet (1.00 to 1.49)"
+	result$class[result$Var1 == 2]  <- "severely wet (1.50 to 1.99)"
+	result$class[result$Var1 == 3]  <- "extremely wet (2.00+)"
 
 	result$name <- NA
 	for(i in seq(length(fillname))) 

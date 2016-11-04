@@ -50,13 +50,18 @@ zonalspi <- function(dir, shp, attrib, progress) {
 
 	progress$inc(4/n, detail = paste("Calculating statistics ... "))
 
-	funcs <- c('mean', 'min', 'max', 'range', 'sd')
+	
+	funcs <- c('mean', 'min', 'max', 'sd')
 	l <- lapply(funcs, function(f) {
 		z <- zonal(spiBrick, zones, f, na.rm=TRUE)
 		zdf <- as.data.frame(z)
 		tmpdf <- melt(zdf, id='zone')
 		df[f] <<- tmpdf$value #assigning to global variable df
 	})
+
+	# had (unresolved) issues with built-in "range" function in the raster package 
+	# workaround since min and max values were validated via ArcGIS
+	df$range <- df$max - df$min
 
 	progress$inc(2/n, detail = paste("Finished!"))
 	return(df)
