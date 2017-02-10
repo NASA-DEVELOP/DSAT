@@ -18,9 +18,10 @@ install.packages("rgdal")
 install.packages("SPEI")
 install.packages("zoo")
 install.packages("reshape2")
-install.packages(“ggplot2”, dependencies = TRUE)
-install.packages(“Rcpp”)
+install.packages("ggplot2", dependencies = TRUE)
+install.packages("Rcpp")
 install.packages("R.utils")
+install.packages("shiny")
 
 #call and install this specific package
 source("https://bioconductor.org/biocLite.R")
