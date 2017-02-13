@@ -29,7 +29,7 @@ biocLite("rhdf5")
 biocLite()
 
 #set working directory, call Shiny, and run Shiny app
-setwd(“C:/file_name”) 
+setwd("C:/file_name") 
 require(shiny)
 runApp() 
 
